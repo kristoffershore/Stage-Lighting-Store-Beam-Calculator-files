@@ -1,0 +1,23 @@
+<html lang="en-us"><head><meta charset="utf-8"><link rel="stylesheet" href="https://www.stagelightingstore.com/themes/sls-2017/cache/v_668_f92d2724e1a8f213f8e24d4baa7e4ee1_all.css?t=20181119-1" type="text/css" media="all">
+ 
+<div class="rte" role="document"> <link rel="stylesheet" type="text/css" href="https://www.stagelightingstore.com/themes/sls-2017/css/product.css" media="screen"><div class="round"><div class="round-display"><h1 class="calc-header">BEAM CALCULATOR</h1></div><div class="calc-digits"> <span class="pull-left"><i>10</i>Digit</span> <span class="pull-right"><b>SLS</b> Estimator</span></div><div class="clear"></div><div class="calc-byline">by LOUIE LUMEN<div class="calc-panel">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</div></div><div class="calc-body"><p>Use this calculator to determine either the size of the circle of light, how far away you should place the light, or which degree of lens you should use. Put in two of the values and then hit calculate to find the third value.</p><p>Values can be in feet or meters, but both values must match.</p><form class="beamcalc" name="beamcalc" id="CB_FORM_ID_1"><p>How wide will the light circle be? <input class="input pull-right" size="5" name="beamwidth"></p><p>How far away will the light be? <input class="input pull-right" size="5" name="distance"></p><p>What degree is the lens? <input class="input pull-right" size="5" name="fieldangle"></p><input class="btn calc-btn" type="button" name="reset_form" value="CLEAR" onclick="this.form.reset();">&nbsp;&nbsp;&nbsp;&nbsp; <input class="btn calc-btn pull-right" onclick="doCalc(this.form)" value="CALCULATE" type="button"><br><br><br><p></p></form></div></div></div> <br></div>
+<script type="text/javascript">
+
+function round2(x){ return Math.round(x * 100) / 100;}
+
+function doCalc(){
+	var d = document.beamcalc.distance.value; var f = document.beamcalc.fieldangle.value; var w = document.beamcalc.beamwidth.value; var error = '';
+		if ('' == f) { var fa = w / (d * 0.018);
+		if (isFinite(fa)) document.beamcalc.fieldangle.value = round2(fa);
+		else error = "Cannot calculate field angle";	}
+		else if ('' == w) { var bw = f * d * 0.018;
+		if (isFinite(bw)) document.beamcalc.beamwidth.value = round2(bw);
+		else error = "Cannot calculate beam width";	}
+		else if ('' == d)	{ var dist = w / (f * 0.018);
+		if (isFinite(dist)) document.beamcalc.distance.value = round2(dist);
+		else error = "Cannot calculate distance";	}
+		else error = "Fill in two of the three values"; document.getElementById('calcError').innerHTML = error;
+}
+
+</script>
+</html>
